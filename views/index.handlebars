@@ -1,0 +1,27 @@
+<h1>Eat A Burger</h1>
+
+<p>Eat them all</p>
+
+<!-- Pass in data from server.js -->
+<ul>
+    {{#each burger}}
+    <li>
+        <p><span class="label">Burger/Sandwhich:</span> {{this.burger}}</p>
+        <p><span class="label">Devouered?:</span> {{this.devouered}}</p>
+
+    </li>
+    {{/each}}
+</ul>
+
+<h2>Add a Burger</h2>
+
+<form class="create-form">
+
+
+    <div class="form-group">
+        <label for="quo">Burger:</label>
+        <textarea id="quo" name="quote" rows="8" cols="40"></textarea>
+    </div>
+
+    <button type="submit">Add Burger</button>
+</form>
