@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Fernando4627/Burger#readme",
   "dependencies": {
+    "dotenv": "^6.1.0",
     "expres": "0.0.5",
     "express-handlebars": "^3.0.0",
     "mysql": "^2.16.0",
