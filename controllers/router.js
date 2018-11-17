@@ -13,8 +13,8 @@ app.post("", function(req,res){
 
 });
 
-app.put("", function(req,res){
-
+app.put("/api/burgers/:id", function(req,res){
+    connection.query("UPDATE burgers SET ")
 });
 
 app.delete("", function(req,res){
