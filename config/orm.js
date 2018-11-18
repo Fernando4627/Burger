@@ -1,5 +1,4 @@
-const connection = require("connection");
-
+const connection = require("./connection");
 let orm = {
     selectAll: (column) => {
         let queryString = "SELECT * FROM ??";

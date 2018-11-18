@@ -1,47 +1,49 @@
-$(function () {
-    $(".create-form").on("submit", function (event) {
+$(document).ready(function () {
+
+    $('body').css('background-image', 'url(./assets/images/woldBkg.jpg)')
+  
+    $(function () {
+      $(".change-devoured").on("click", function (event) {
+        var id = $(this).data("id");
+        var newDevoured = $(this).data("new_devoured");
+  
+        var newDevouredState = {
+          devoured: newDevoured
+        };
+  
+        // Send the PUT request.
+        $.ajax("/api/burgers/" + id, {
+          type: "PUT",
+          data: newDevouredState
+        }).then(
+          function () {
+            console.log("changed devoured to", newDevoured);
+            // Reload the page to get the updated list
+            location.reload();
+          }
+        );
+      });
+  
+      $(".create-form").on("submit", function (event) {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
-
-        let newburger = {
-            author: $("#auth").val().trim(),
-            burger: $("#quo").val().trim()
+  
+        var newBurger = {
+          name: $("#ca").val().trim(),
+          devoured: $("[name=devoured]:checked").val().trim()
         };
-
+  
         // Send the POST request.
         $.ajax("/api/burgers", {
-            type: "POST",
-            data: newburger
+          type: "POST",
+          data: newBurger
         }).then(
-            function () {
-                console.log("created new burger");
-                // Reload the page to get the updated list
-                location.reload();
-            }
+          function () {
+            console.log("created new burger");
+            // Reload the page to get the updated list
+            location.reload();
+          }
         );
+      });
     });
-
-    $(".update-form").on("submit", function (event) {
-        // Make sure to preventDefault on a submit event.
-        event.preventDefault();
-
-        let updatedburger = {
-            author: $("#auth").val().trim(),
-            burger: $("#quo").val().trim()
-        };
-
-        let id = $(this).data("id");
-
-        // Send the POST request.
-        $.ajax("/api/burgers/" + id, {
-            type: "PUT",
-            data: updatedburger
-        }).then(
-            function () {
-                console.log("updated burger");
-                // Reload the page to get the updated list
-                location.assign("/");
-            }
-        );
-    });
-});
+  });
